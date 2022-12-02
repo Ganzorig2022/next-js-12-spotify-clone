@@ -1,5 +1,5 @@
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
-import { useSession } from 'next-auth/react';
+import { useSession, signOut } from 'next-auth/react';
 import React, { useEffect, useState } from 'react';
 import { shuffle } from 'lodash';
 import { playlistIdState, playlistState } from '../atoms/playlistAtom';
@@ -43,7 +43,10 @@ const Center = () => {
   return (
     <div className='flex-grow text-white'>
       <header className='absolute top-5 right-8'>
-        <div className='flex items-center bg-black space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2 text-white'>
+        <div
+          className='flex items-center bg-black space-x-3 opacity-90 hover:opacity-80 cursor-pointer rounded-full p-1 pr-2 text-white'
+          onClick={() => signOut()}
+        >
           <img
             className='rounded-full w-10 h-10'
             src={session?.user.image}
